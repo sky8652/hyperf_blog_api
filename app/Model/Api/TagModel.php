@@ -24,6 +24,7 @@ class TagModel extends Model
         'tag_type',
         'tag_level',
         'tag_status',
+        'is_series',
         'created_at',
         'updated_at',
     ];
@@ -36,7 +37,8 @@ class TagModel extends Model
 
     protected $appends = [
         'tag_type_name',
-        'status_name'
+        'status_name',
+        'is_series_name'
     ];
 
     public static $tagTypeMapping = [
@@ -50,6 +52,11 @@ class TagModel extends Model
         2 => '隐藏'
     ];
 
+    public static $isSeriesName = [
+        1 => '是',
+        2 => '否'
+    ];
+
     public function getTagTypeNameAttribute()
     {
         return self::$tagTypeMapping[$this->tag_type];
@@ -58,6 +65,11 @@ class TagModel extends Model
     public function getStatusNameAttribute()
     {
         return self::$statusMapping[$this->tag_status];
+    }
+
+    public function getIsSeriesNameAttribute()
+    {
+        return self::$isSeriesName[$this->is_series];
     }
 
 

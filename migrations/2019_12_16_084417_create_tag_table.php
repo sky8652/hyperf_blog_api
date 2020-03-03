@@ -17,6 +17,7 @@ class CreateTagTable extends Migration
             $table->tinyInteger('tag_type')->nullable(false)->default(1)->comment('标签类型 1普通 2需登录查看 3需付费查看');
             $table->tinyInteger('tag_level')->nullable(false)->default(1)->comment('标签排序');
             $table->tinyInteger('tag_status')->nullable(false)->default(1)->comment('标签状态 1 正常显示 2 隐藏');
+            $table->tinyInteger('is_series')->nullable(false)->default(1)->comment('是否系列文章 1 是 2 不是');
             $table->timestamps();
         });
     }

@@ -23,6 +23,7 @@ class AdminService
      */
     protected $jwt;
 
+    public static $halt = 'this is my blog';
 
     public function login($email, $password)
     {
@@ -31,7 +32,7 @@ class AdminService
             throw new WrongRequestException("无此账户!");
         }
 
-        if (!password_verify($password,$admin->password)) {
+        if (!password_verify($password.self::$halt,$admin->password)) {
             throw new WrongRequestException("账户密码错误!");
         }
 

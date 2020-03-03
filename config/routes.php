@@ -53,6 +53,7 @@ Router::addGroup('/api/',function (){
 
 
 
+    //获取管理员相关信息
     Router::get('admin/info','App\Controller\Api\AdminController@adminInfo');
     Router::post('admin/logout','App\Controller\Api\AdminController@logout');
 

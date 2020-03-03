@@ -36,10 +36,11 @@ class TagService
     {
         $where = ['id'=>$params['id'] ?? 0];
         $attr  = [
-            'tag_name' => trim($params['tag_name']),
-            'tag_type' => $params['tag_type'],
+            'tag_name'   => trim($params['tag_name']),
+            'tag_type'   => $params['tag_type'],
             'tag_status' => $params['tag_status'],
-            'tag_level' => $params['tag_level'],
+            'tag_level'  => $params['tag_level'],
+            'is_series'  => $params['is_series'],
         ];
         return TagModel::query()->updateOrCreate($where, $attr);
     }
@@ -75,6 +76,10 @@ class TagService
 
         if (!empty($params['tag_status'])) {
             $build->whereIn('tag_status',$params['tag_status']);
+        }
+
+        if (!empty($params['is_series'])) {
+            $build->where('is_series',$params['is_series']);
         }
 
         return $build;
