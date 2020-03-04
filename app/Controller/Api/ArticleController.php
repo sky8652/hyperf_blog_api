@@ -43,7 +43,6 @@ class ArticleController extends AbstractController
     public function save(ArticleRequest $request)
     {
         $request->validated();
-
         return $this->success('成功',$this->articleService->save($request->all()));
     }
 

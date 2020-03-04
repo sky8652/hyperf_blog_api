@@ -13,6 +13,8 @@ declare(strict_types=1);
 use Hyperf\HttpServer\Router\Router;
 
 Router::post('/api/admin/login','App\Controller\Api\AdminController@login');
+// 七牛上传图片
+Router::post('/api/upload/image','App\Controller\Api\UploadController@image');
 
 Router::addGroup('/api/',function (){
 
@@ -51,18 +53,20 @@ Router::addGroup('/api/',function (){
 
     });
 
+    //站点设置
+    Router::addGroup('site/',function () {
+
+        Router::get('settings','App\Controller\Api\SiteSettingController@settings');
+
+        Router::post('save','App\Controller\Api\SiteSettingController@save');
+    });
+
 
 
     //获取管理员相关信息
     Router::get('admin/info','App\Controller\Api\AdminController@adminInfo');
     Router::post('admin/logout','App\Controller\Api\AdminController@logout');
 
-    // 七牛上传图片
-    Router::post('upload/image','App\Controller\Api\UploadController@image');
-
 },['middleware'=>[
     Phper666\JwtAuth\Middleware\JwtAuthMiddleware::class,
 ]]);
-
-
-
