@@ -73,7 +73,10 @@ class ArticleModel extends Model
 
     public function getStatusNameAttribute()
     {
-        return self::$statusMapping[$this->article_status];
+        if ( $this->article_status ) {
+            return  self::$statusMapping[$this->article_status];
+        }
+        return '';
     }
 
     public function getIsRecommendNameAttribute()

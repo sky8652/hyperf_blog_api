@@ -16,6 +16,17 @@ Router::post('/api/admin/login','App\Controller\Api\AdminController@login');
 // 七牛上传图片
 Router::post('/api/upload/image','App\Controller\Api\UploadController@image');
 
+//获取站点信息
+Router::get('/api/site/settings','App\Controller\Api\SiteSettingController@settings');
+
+Router::addGroup('/api/home/',function () {
+
+   Router::get('tag','App\Controller\Api\TagController@homeTags');
+
+   Router::get('article','App\Controller\Api\ArticleController@homeArticles');
+
+});
+
 Router::addGroup('/api/',function (){
 
     Router::addGroup('status/',function () {
@@ -55,8 +66,6 @@ Router::addGroup('/api/',function (){
 
     //站点设置
     Router::addGroup('site/',function () {
-
-        Router::get('settings','App\Controller\Api\SiteSettingController@settings');
 
         Router::post('save','App\Controller\Api\SiteSettingController@save');
     });

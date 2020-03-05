@@ -24,6 +24,17 @@ class ArticleService
         return $tagBuild->paginate(10);
     }
 
+    public function homeArticles($tagId) {
+        return ArticleModel::query()->where('tag_id', $tagId)
+            ->where('article_status', 1)
+            ->orderBy('is_recommend')
+            ->orderByDesc('article_level')
+            ->orderByDesc('created_at')
+            ->select(['id', 'article_title', 'article_type', 'article_count', 'is_recommend', 'created_at'])
+            ->paginate(10);
+
+    }
+
     public function row($id)
     {
         return ArticleModel::query()->where('id',$id)->first();

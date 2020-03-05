@@ -47,6 +47,11 @@ class ArticleRequest extends FormRequest
                     'article_id' => 'required',
                 ];
                 break;
+            case 'api/home/article':
+                $rules = [
+                    'tag_id' => 'required'
+                ];
+                break;
         }
 
         return $rules;

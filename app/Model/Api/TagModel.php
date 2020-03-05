@@ -72,5 +72,9 @@ class TagModel extends Model
         return self::$isSeriesName[$this->is_series];
     }
 
+    public function articles() {
+        return $this->hasMany(ArticleModel::class,'tag_id','id')->select(['id','article_title','tag_id']);
+    }
+
 
 }

@@ -26,6 +26,20 @@ class TagService
         return $tagBuild->paginate(10);
     }
 
+    public function homeTags() {
+        $tags = TagModel::query()->with('articles')->where('is_series',2)
+                                ->where('tag_status',1)
+                                ->orderByDesc('tag_level')
+                                ->get(['tag_name','id']);
+
+        $tags->each(function ($tag) {
+            $tag->article_count = count($tag->articles);
+            unset($tag->articles);
+        });
+
+        return $tags;
+    }
+
     public function tags()
     {
         return TagModel::query()->orderByDesc('tag_level')->get();

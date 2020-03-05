@@ -27,8 +27,16 @@ class SiteSetting extends Model
         'site_icon',
         'site_record',
         'site_owner',
+        'site_notice',
         'created_at',
         'updated_at',
     ];
 
+    public $appends = [
+        'site_icon_url'
+    ];
+
+    public function getSiteIconUrlAttribute() {
+        return env('IMG_HOST').$this->site_icon;
+    }
 }

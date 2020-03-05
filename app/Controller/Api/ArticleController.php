@@ -34,6 +34,10 @@ class ArticleController extends AbstractController
         return $this->success('成功',$this->articleService->list($request->all()));
     }
 
+    public function homeArticles(ArticleRequest $request) {
+        return $this->success('成功', $this->articleService->homeArticles($request->input('tag_id')));
+    }
+
     public function row(ArticleRequest $request)
     {
         $request->validated();

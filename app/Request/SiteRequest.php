@@ -33,6 +33,7 @@ class SiteRequest extends FormRequest
                     'site_icon'   => 'required',
                     'site_record' => 'required',
                     'site_owner'  => 'required',
+                    'site_notice' => 'required',
                 ];
                 break;
         }
