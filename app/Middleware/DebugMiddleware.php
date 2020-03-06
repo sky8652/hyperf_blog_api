@@ -35,7 +35,7 @@ class DebugMiddleware implements MiddlewareInterface
         $time = microtime(true);
         $response = $handler->handle($request);
 
-        if (env('APP_DEBUG', false) === false) {
+        if (config('app_debug', false) === false) {
             return $response;
         }
 

@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'create' => 10,
+    'create' => 1,
     'consume' => 1,
-    'capacity' => 2,
+    'capacity' => 1000,
     'limitCallback' => [],
-    'waitTimeout' => 2,
+    'waitTimeout' => 3,
 ];

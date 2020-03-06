@@ -37,7 +37,10 @@ class ArticleService
 
     public function row($id)
     {
-        return ArticleModel::query()->where('id',$id)->first();
+        $article = ArticleModel::query()->with('tag')->where('id',$id)->first();
+        $article->article_count = $article->article_count+1;
+        $article->save();
+        return $article;
     }
 
 

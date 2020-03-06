@@ -18,6 +18,7 @@ class CreateSiteSettingsTable extends Migration
             $table->string('site_icon')->nullable(false)->default('');
             $table->string('site_record')->nullable(false)->default('')->comment('备案号');
             $table->string('site_owner')->nullable(false)->default('');
+            $table->string('site_owner_desc')->nullable(false)->default('');
             $table->string('site_notice')->nullable(false)->default('');
             $table->timestamps();
         });

@@ -15,7 +15,10 @@ use App\Controller\AbstractController;
 use App\Request\AdminRequest;
 use App\Services\Api\AdminService;
 use Hyperf\Di\Annotation\Inject;
+use Hyperf\HttpServer\Annotation\Controller;
+use Hyperf\HttpServer\Annotation\PostMapping;
 use Phper666\JwtAuth\Jwt;
+use Hyperf\RateLimit\Annotation\RateLimit;
 
 
 class AdminController extends AbstractController
@@ -26,6 +29,7 @@ class AdminController extends AbstractController
      * @var AdminService
      */
     protected $adminService;
+
 
     public function login(AdminRequest $request)
     {

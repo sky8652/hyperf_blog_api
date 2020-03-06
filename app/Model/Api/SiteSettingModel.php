@@ -6,7 +6,7 @@ namespace App\Model\Api;
 use Hyperf\DbConnection\Model\Model;
 /**
  */
-class SiteSetting extends Model
+class SiteSettingModel extends Model
 {
     /**
      * The table associated with the model.
@@ -27,6 +27,7 @@ class SiteSetting extends Model
         'site_icon',
         'site_record',
         'site_owner',
+        'site_owner_desc',
         'site_notice',
         'created_at',
         'updated_at',
@@ -37,6 +38,6 @@ class SiteSetting extends Model
     ];
 
     public function getSiteIconUrlAttribute() {
-        return env('IMG_HOST').$this->site_icon;
+        return config('img_host').$this->site_icon;
     }
 }

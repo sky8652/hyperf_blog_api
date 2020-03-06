@@ -29,4 +29,19 @@ class SiteSettingController extends AbstractController
         $request->validated();
         return $this->success('成功', $this->siteService->save($request->all()));
     }
+
+    public function saveFriendLink(SiteRequest $request) {
+        $request->validated();
+        return $this->success('成功', $this->siteService->saveFriendLink($request->all()));
+    }
+
+    public function deleteFriendLink(SiteRequest $request) {
+        $request->validated();
+        return $this->success('成功', $this->siteService->deleteFriendLink($request->input('id')));
+    }
+
+    public function friendLinks() {
+        return $this->success('成功', $this->siteService->friendLinks());
+    }
+
 }

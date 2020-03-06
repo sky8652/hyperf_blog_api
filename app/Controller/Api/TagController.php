@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace App\Controller\Api;
 use App\Controller\AbstractController;
-use App\Request\SiteRequest;
 use App\Request\TagRequest;
 use App\Services\Api\TagService;
 use Hyperf\Di\Annotation\Inject;
