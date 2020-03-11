@@ -68,19 +68,16 @@ class ArticleModel extends Model
 
     public function getTypeNameAttribute()
     {
-        return self::$tagTypeMapping[$this->article_type];
+        return self::$tagTypeMapping[$this->article_type] ?? '';
     }
 
     public function getStatusNameAttribute()
     {
-        if ( $this->article_status ) {
-            return  self::$statusMapping[$this->article_status];
-        }
-        return '';
+       return  self::$statusMapping[$this->article_status] ?? '';
     }
 
     public function getIsRecommendNameAttribute()
     {
-        return self::$recommendMapping[$this->is_recommend];
+        return self::$recommendMapping[$this->is_recommend] ?? '';
     }
 }

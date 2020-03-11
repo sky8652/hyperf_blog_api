@@ -15,24 +15,29 @@ use Hyperf\HttpServer\Router\Router;
 //管理员登录
 Router::post('/api/admin/login','App\Controller\Api\AdminController@login');
 
-// 七牛上传图片
-Router::post('/api/upload/image','App\Controller\Api\UploadController@image');
-
-//获取站点信息
-Router::get('/api/site/settings','App\Controller\Api\SiteSettingController@settings');
-
-//获取友情链接
-Router::get('/api/site/friend_links','App\Controller\Api\SiteSettingController@friendLinks');
-
-//获取文章详情
-Router::get('/api/article/row','App\Controller\Api\ArticleController@row');
 
 //前端页面
 Router::addGroup('/api/home/',function () {
 
    Router::get('tag','App\Controller\Api\TagController@homeTags');
 
+   Router::get('tag/series','App\Controller\Api\TagController@seriesTag');
+
    Router::get('article','App\Controller\Api\ArticleController@homeArticles');
+
+   //获取文章详情
+   Router::get('article/row','App\Controller\Api\ArticleController@row');
+
+   //获取最多阅读和最新发布文章
+   Router::get('article/most_reading','App\Controller\Api\ArticleController@mostReading');
+   Router::get('article/the_newest','App\Controller\Api\ArticleController@theNewest');
+
+
+   //获取站点信息
+   Router::get('site/settings','App\Controller\Api\SiteSettingController@settings');
+
+   //获取友情链接
+   Router::get('site/friend_links','App\Controller\Api\SiteSettingController@friendLinks');
 
 });
 
@@ -84,9 +89,11 @@ Router::addGroup('/api/',function (){
 
         //删除友情链接
         Router::post('delete_friend_link','App\Controller\Api\SiteSettingController@deleteFriendLink');
+
     });
 
-
+    // 七牛上传图片
+    Router::post('upload/image','App\Controller\Api\UploadController@image');
 
     //获取管理员相关信息
     Router::get('admin/info','App\Controller\Api\AdminController@adminInfo');

@@ -37,6 +37,11 @@ class TagController extends AbstractController
         return $this->success('成功', $this->tagService->homeTags());
     }
 
+    public function seriesTag()
+    {
+        return $this->success('成功', $this->tagService->seriesTags());
+    }
+
     public function save(TagRequest $request)
     {
         $request->validated();

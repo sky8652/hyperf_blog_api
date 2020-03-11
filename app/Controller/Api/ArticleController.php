@@ -56,4 +56,14 @@ class ArticleController extends AbstractController
 
         return $this->success('成功',$this->articleService->delete($request->input('article_id')));
     }
+
+    public function mostReading()
+    {
+        return $this->success('成功', $this->articleService->mostReadingArticles());
+    }
+
+    public function theNewest()
+    {
+        return $this->success('成功', $this->articleService->newestArticles());
+    }
 }

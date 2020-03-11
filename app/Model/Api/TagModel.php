@@ -59,17 +59,17 @@ class TagModel extends Model
 
     public function getTagTypeNameAttribute()
     {
-        return self::$tagTypeMapping[$this->tag_type];
+        return self::$tagTypeMapping[$this->tag_type] ?? '';
     }
 
     public function getStatusNameAttribute()
     {
-        return self::$statusMapping[$this->tag_status];
+        return self::$statusMapping[$this->tag_status] ?? '';
     }
 
     public function getIsSeriesNameAttribute()
     {
-        return self::$isSeriesName[$this->is_series];
+        return self::$isSeriesName[$this->is_series] ?? '';
     }
 
     public function articles() {
