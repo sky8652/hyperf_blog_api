@@ -66,4 +66,9 @@ class ArticleController extends AbstractController
     {
         return $this->success('成功', $this->articleService->newestArticles());
     }
+
+    public function timeline()
+    {
+        return $this->success('成功', $this->articleService->timeline());
+    }
 }

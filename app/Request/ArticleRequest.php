@@ -31,7 +31,6 @@ class ArticleRequest extends FormRequest
                 $rules = [
                     'article_title'   => 'required|max:100',
                     'article_desc'    => 'required',
-                    'article_img'     => '',
                     'article_content' => 'required',
                     'article_type'    => 'required|integer|in:1,2,3',
                     'article_status'  => 'required|integer|in:1,2',

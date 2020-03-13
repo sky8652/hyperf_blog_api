@@ -25,6 +25,9 @@ Router::addGroup('/api/home/',function () {
 
    Router::get('article','App\Controller\Api\ArticleController@homeArticles');
 
+
+   Router::get('timeline','App\Controller\Api\ArticleController@timeline');
+
    //获取文章详情
    Router::get('article/row','App\Controller\Api\ArticleController@row');
 

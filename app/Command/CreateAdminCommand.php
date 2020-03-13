@@ -8,7 +8,6 @@ use App\Model\Api\Admin;
 use App\Services\Api\AdminService;
 use Hyperf\Command\Command as HyperfCommand;
 use Hyperf\Command\Annotation\Command;
-use mysql_xdevapi\Exception;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Input\InputArgument;
 

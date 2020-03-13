@@ -40,7 +40,7 @@ class ArticleService
             ->where('article_status', 1)
             ->orderBy('is_recommend')
             ->orderByDesc('article_level')
-            ->orderByDesc('created_at')
+            ->orderByDesc('id')
             ->select(['id', 'article_title', 'article_type', 'article_count', 'is_recommend', 'created_at'])
             ->paginate(10);
 
@@ -92,7 +92,6 @@ class ArticleService
 
         $article->article_title   = $params['article_title'];
         $article->article_desc    = $params['article_desc'];
-        $article->article_img     = $params['article_img'];
         $article->article_content = $params['article_content'];
         $article->article_type    = $params['article_type'];
         $article->article_status  = $params['article_status'];
@@ -167,6 +166,22 @@ class ArticleService
                 return $c.$v.'前';
             }
         }
+    }
+
+    /**
+     * 获取时间线
+     * @return \Hyperf\Database\Model\Builder[]|\Hyperf\Database\Model\Collection
+     */
+    public function timeline()
+    {
+        $articles = ArticleModel::query()->where('article_status',1)
+                                    ->orderByDesc('id')
+                                    ->get(['id','article_title','created_at']);
+        $articles->each(function ($row) {
+            $row->minus_time = $this->formatDate(strtotime($row->created_at));
+        });
+
+        return $articles;
     }
 
     /**
